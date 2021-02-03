@@ -48,4 +48,3 @@ data <- data.frame(sample_size, variance)
 
 dev.new()
 plot(data)
-

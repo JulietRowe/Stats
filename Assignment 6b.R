@@ -124,5 +124,43 @@ for(counter in 1:100000)
   newsample.means[counter] = mean(newsample.data)
 }
 
-stuff = hist(newsample.means)
-stuff
+hist(newsample.means)
+min(newsample.means)
+max(newsample.means)
+
+#Probability of getting a mean of 460
+sum(newsample.means == 460)/100000
+
+#Question 4
+Randomsample.data = NA
+Randomsample.means = NA 
+
+for(counter in 1:100000)
+{
+  Randomsample.data = runif(30, 1, 1000)
+  Randomsample.means[counter] = mean(Randomsample.data)
+}
+
+hist(Randomsample.means)
+
+min(Randomsample.means)
+max(Randomsample.means)
+sum(Randomsample.means == 460)/100000
+
+#Question 5
+newsample1.data = NA
+newsample1.means = NA
+
+for(counter in 1:100000)
+{
+  newsample1.data = rnorm(100, 500, 100)
+  newsample1.means[counter] = mean(newsample1.data)
+}
+
+hist(newsample1.means)
+min(newsample1.means)
+max(newsample1.means)
+
+#Question 9
+SEM = 100/sqrt(30)
+SEM

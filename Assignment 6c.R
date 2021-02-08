@@ -1,16 +1,21 @@
 data.means = NA
 data.sds = NA
+data.SW_normality = NA
+data.KS_normality = NA
 
 for(counter in 1:10)
 {
   data = read.table(sprintf("subject%d.txt", counter), sep = " ")
-  data.means[counter] = mean(data$V1)
-  data.sds[counter] = sd(data$V1)
+  data = stack(data)
+  data.means[counter] = mean(data$values)
+  data.sds[counter] = sd(data$values)
+  print(range(data$values))
+  dev.new()
+  hist(data$values, main = counter)
+  data.SW_normality[counter] = shapiro.test(data$values)$p.value
+  data.KS_normality[counter] = ks.test(data$values, pnorm, mean(data$values), sd(data$values))$p.value
 }
 
-data.means[counter] = mean(data$V1)
-data.sds[counter] = sd(data$V1)
-data.ranges[counter] = range(data$V1)
-hist(data$V1)
-shapiro.test(data$V1)
-ks.test(data, pnorm, mean(data$V1), sd(data$V1))
+#Assumption of normality is the assumption that a a sample's means are distributed normally. 
+
+

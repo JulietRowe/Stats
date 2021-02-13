@@ -128,8 +128,15 @@ hist(newsample.means)
 min(newsample.means)
 max(newsample.means)
 
-#Probability of getting a mean of 460
-sum(newsample.means == 460)/100000
+#Probability of getting a mean less than 460
+#Since we are sampling from 100000 means, the central limit theorem states
+#that the sampling distribution is normally distributed. 
+#Additionally, according to CLT, the mean of the sampling distribution will
+#be equal to mu and the standard deviation is equal to signal over root n.
+#As such, we can calculate a z-score to determine the probability. 
+
+z = (460 - 500)/ (100/sqrt(30))
+#The probability is 0.01426
 
 #Question 4
 Randomsample.data = NA
@@ -164,3 +171,4 @@ max(newsample1.means)
 #Question 9
 SEM = 100/sqrt(30)
 SEM
+#One sample t test with 460 being mu

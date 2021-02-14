@@ -36,7 +36,8 @@ var(data$rt[data$group == 4])
 
 bartlett.test(data$rt~data$group)
 
-leveneTest(data$rt~data$group) #This is running an error?
+library(car)
+leveneTest(data$rt~data$group) 
 
 #Visualizing Data
 boxplot(data$rt~data$group)

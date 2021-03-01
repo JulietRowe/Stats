@@ -47,4 +47,5 @@ model
 
 #Post-Hoc Analysis of RM ANOVA
 pairwise.t.test(data$data, data$condition, paired = TRUE)
-
+#There is a trend that is significant, but it isn't between any two conditions
+#If you run linear regression you would find it to be significant

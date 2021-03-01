@@ -31,17 +31,19 @@ qqline(data$data[data$condition == 6])
 bartlett.test(data$data~data$condition)
 #Assumption of homogeneity of variances is met p = 0.8395
 
-#Assumption of sphericity
-library("ez")
-model = ezANOVA(data=data, dv = .(data), wid = .(subject), within = .(condition), detailed = TRUE, type = 3)
-model
-#Assumption of sphericity is met
-
 #Repeated measures ANOVA
 model = aov(data$data~data$condition + Error(data$subject/data$condition))
 #removing between participant variance from the overall error variance
 summary(model)
-#There exists a significant difference among the conditions
+#There exists a significant difference among the conditions but we do not know if the 
+#assumption of sphericity is met and whether or not we need a correct p value
+
+#Assumption of sphericity and repeated ANOVA
+library("ez")
+model = ezANOVA(data=data, dv = .(data), wid = .(subject), within = .(condition), detailed = TRUE, type = 3)
+model
+#Assumption of sphericity is met p > 0.05
+#There does exist a statistical difference p < 0.05
 
 #Post-Hoc Analysis of RM ANOVA
 pairwise.t.test(data$data, data$condition, paired = TRUE)

@@ -29,6 +29,12 @@ qqline(data$rt[data$group == 3])
 qqnorm(data$rt[data$group == 4])
 qqline(data$rt[data$group == 4])
 
+for(counter in 1:4)
+{
+  analysis = shapiro.test(data$rt[data$group== counter])
+  print(analysis)
+}
+
 var(data$rt[data$group == 1])
 var(data$rt[data$group == 2])
 var(data$rt[data$group == 3])

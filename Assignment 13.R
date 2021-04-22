@@ -1,7 +1,11 @@
 data = read.table("data1.txt")
 
 diffscores = data$V2 - data$V1
-
+mean = mean(diffscores)
+sd = sd(diffscores)
+CI = abs(qt(0.05, 19)*sd/sqrt(20))
+LL_CI = mean - CI
+UL_CI = mean + CI
 #Bayesion equivalent of a single sample t-test
 library(BEST)
 results1 = BESTmcmc(diffscores)

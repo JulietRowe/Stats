@@ -40,6 +40,13 @@ var(data$rt[data$group == 2])
 var(data$rt[data$group == 3])
 var(data$rt[data$group == 4])
 
+#Testing normality 
+shapiro.test(data$rt[data$group==1])
+shapiro.test(data$rt[data$group==2])
+shapiro.test(data$rt[data$group==3])
+shapiro.test(data$rt[data$group==4])
+
+#Testing Homogeneity
 bartlett.test(data$rt~data$group)
 
 library(car)

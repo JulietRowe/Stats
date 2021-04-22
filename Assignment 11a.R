@@ -27,6 +27,12 @@ qqnorm(data$data[data$condition == 6])
 qqline(data$data[data$condition == 6])
 #Data is normally distributed 
 #How do include participants when testing anova assumptions?
+shapiro.test(data$data[data$condition == 1])
+shapiro.test(data$data[data$condition == 2])
+shapiro.test(data$data[data$condition == 3])
+shapiro.test(data$data[data$condition == 4])
+shapiro.test(data$data[data$condition == 5])
+shapiro.test(data$data[data$condition == 6])
 
 bartlett.test(data$data~data$condition)
 #Assumption of homogeneity of variances is met p = 0.8395
@@ -46,6 +52,6 @@ model
 #There does exist a statistical difference p < 0.05
 
 #Post-Hoc Analysis of RM ANOVA
-pairwise.t.test(data$data, data$condition, paired = TRUE)
+pairwise.t.test(data$data, data$condition, p.adjust = 'bonf', paired = TRUE)
 #There is a trend that is significant, but it isn't between any two conditions
 #If you run linear regression you would find it to be significant

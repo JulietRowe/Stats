@@ -7,7 +7,6 @@ gender = factor(data$gender)
 model = aov(rt~age + gender + age*gender)
 summary(model)
 
-plot(model)
 
 #Effects of age
 plot(rt~age)
@@ -17,6 +16,19 @@ plot(rt~gender)
 
 #Interaction
 interaction.plot(age, gender, rt)
+
+#Testing homogenity of variance
+libray('car')
+leveneTest(rt, age)
+leveneTest(rt, gender)
+leveneTest(rt, interaction(age, gender))
+
+#Testing normality
+shapiro.test(rt[age == 1])
+shapiro.test(rt[age == 2])
+shapiro.test(rt[age == 3])
+shapiro.test(rt[gender == 1])
+shapiro.test(rt[gender == 2])
 
 #Young (group 3) appear to have reaction times that are faster
 #Than the other two age groups

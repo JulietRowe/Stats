@@ -31,7 +31,6 @@ summary(analysis)
 
 #Post Hoc
 TukeyHSD(analysis)
-pairwise.t.test(data$RT, data$group, p.adjust = "bonf")
 #Reaction times differ between the young and the old (p < 0.05) 
 # and between the middle and the old age groups (p < 0.05)
 

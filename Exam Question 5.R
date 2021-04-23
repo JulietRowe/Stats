@@ -10,6 +10,5 @@ summary(model)
 plot(data$V2~data$V1)
 abline(lm(data$V2~data$V1))
 
-
 #F(98) = 4.125, p < 0.05
 # y = 0.007906x + 7.395410
